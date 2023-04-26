@@ -180,7 +180,7 @@ const persona = {
   }
 }
 
-persona.saludar(); 
+persona.saludar()
 // Salida:
 // Hola, mi nombre es Juan Expósito y tengo 47 años
 ```
@@ -323,19 +323,190 @@ Para crear el objeto persona2 primero decimos que estamos creando un objeto, añ
 
 ## Operador Optional Chaining
 
-// Por hacer
+**Optional chaining**, o encadenamiento opcional, es una característica de JavaScript introducida en la versión ES2020, que permite acceder a las propiedades de un objeto de forma segura, evitando errores si una propiedad no existe o es nula.
+
+La sintaxis del optional chaining utiliza el signo de interrogación **?** para indicar que una propiedad puede o no existir en el objeto.
+
+```js
+const persona = {
+  nombre: 'Juan Expósito',
+  edad: 47,
+}
+
+const persona2 = {...persona}
+
+console.log(persona.apellidos.primerApellido)
+// Salida:
+// TypeError: Cannot read properties of undefined (reading 'primerApellido')
+console.log(persona.apellidos?.primerApellido)
+// Salida:
+// undefined
+```
+**Optional chaining** es especialmente útil cuando se trabaja con objetos anidados y propiedades opcionales, ya que evita la necesidad de escribir múltiples comprobaciones de nulidad o utilizar estructuras de control como los operadores ternarios.
 
 ## Operador Ternario
 
-// Por hacer
+El operador ternario en JavaScript es una estructura de control que permite evaluar una expresión y, según el resultado de esta evaluación, ejecutar una de dos opciones. Es una estructura del tipo **if then else** pero reducida a la mínima expresión.
+
+```js
+const edad = 18
+const mensaje = edad >= 18 ? 'Eres mayor de edad' : 'Eres menor de edad'
+console.log(mensaje)
+// Salida:
+// Eres mayor de edad
+```
 
 ## Arreglos en Javascript y operador Spread
 
-// Por hacer
+Es una colección ordenada de elementos. Cada elemento del arreglo tiene una posición numérica llamada índice, que comienza en cero para el primer elemento del arreglo.
+
+Los arreglos en JavaScript pueden contener cualquier tipo de datos, como números, strings, objetos, funciones, etc.
+
+```js
+const lenguajes = [ 'Ruby', 'Rust', 'Erlang', 'Elixir']
+
+lenguajes.push('Javascript', 'R')
+
+console.log(lenguajes)
+
+// Salida:
+// [ 'Ruby', 'Rust', 'Erlang', 'Elixir', 'Javascript', 'R' ]
+// 0: 'Ruby'
+// 1: 'Rust'
+// 2: 'Erlang'
+// 3: 'Elixir'
+// 4: 'Javascript'
+// 5: 'R'
+
+```
+Además, los arreglos en JavaScript tienen una variedad de métodos útiles para manipular su contenido, como **push()**, **pop()**, **shift()**, **unshift()**, **splice()**, **concat()**, **slice()**, entre otros. En este caso hemos utilizado **push()** para añadir contenido al arreglo.
+
+Se puede obtener el número de elementos del arreglo mediante **length()**.
+
+Los arreglos son estructuras iterables, es decir, es posible recorrerlas mediante algunas estructuras de control como **forEach**, vista en el apartado de [Atributos de tipo arreglo](#atributos-de-tipo-arreglo).
+
+```js
+const lenguajes = [ 'Ruby', 'Rust', 'Erlang', 'Elixir', 'Javascript', 'R']
+
+lenguajes.forEach(function(elemento) {
+    console.log(elemento)
+})
+
+```
+**forEach** recibe una función como parámetro que se ejecutará tantas veces como elementos tenga el arreglo. El elemento se recibe como parámetro de la función y se utiliza en su interior.
+
+Es posible utilizar funciones de flecha para hacerlo más legible.
+
+```js
+const lenguajes = [ 'Ruby', 'Rust', 'Erlang', 'Elixir', 'Javascript', 'R']
+
+lenguajes.forEach( (elemento) => {
+    console.log(elemento)
+})
+
+```js
+Si únicamente tiene un parámetro, se pueden eliminar los paréntesis y las llaves (y si hubiera un return también).
+```js
+const lenguajes = [ 'Ruby', 'Rust', 'Erlang', 'Elixir', 'Javascript', 'R']
+
+lenguajes.forEach(elemento => console.log(elemento))
+
+```
+Además, si existe un único parámetro y este, a su vez, se pasa como parámetro de otra función (en este caso del **console.log**), se pueden eliminar las referencias al **elemento**.
+
+```js
+Si únicamente tiene un parámetro, se pueden eliminar los paréntesis y las llaves (y si hubiera un return también).
+```js
+const lenguajes = [ 'Ruby', 'Rust', 'Erlang', 'Elixir', 'Javascript', 'R']
+
+lenguajes.forEach( console.log )
+
+```
+Se puede utilizar el operador de propagación visto en [Operador Spread](#operador-spread) también con los arreglos. 
+
+```js
+Si únicamente tiene un parámetro, se pueden eliminar los paréntesis y las llaves (y si hubiera un return también).
+```js
+const lenguajes = [ 'Ruby', 'Rust', 'Erlang', 'Elixir', 'Javascript', 'R']
+const frameworks = ['Ruby on Rails', 'Phoenix', 'Groovy on Grails']
+
+const aprendizaje = [...lenguajes, ...frameworks]
+
+console.log(aprendizaje)
+
+// Salida: 
+// [
+  'Ruby',
+  'Rust',
+  'Erlang',
+  'Elixir',
+  'Javascript',
+  'R',
+  'Ruby on Rails',
+  'Phoenix',
+  'Groovy on Grails'
+]
+
+```
 
 ## Desestructuración de Objetos
 
-// Por hacer
+La **desestructuración** de objetos en JavaScript es una técnica que permite extraer valores de un objeto y asignarlos a variables de manera más sencilla y legible. La sintaxis de la desestructuración de objetos es similar a la sintaxis de los objetos literales de JavaScript, pero utiliza variables en lugar de valores literales.
+
+```js
+const usuario = {
+    nombre: "Juan",
+    apellidos: "Expósito",
+    edad: 47,
+    correo: "juan.exposito@ejemplo.com"
+}
+
+const { edad, nombre, apellidos } = usuario
+
+console.log(nombre, apellidos, edad)
+
+// Salida:
+// Juan Expósito 47
+```
+Con esta técnica se desarma el objeto **usuario** en aquellas variables que nos interesen. Entre llaves, y en cualquier orden, irá el nombre de esas variables. Una vez desestructurado el objeto, podremos utilzar las variables de forma aislada.
+
+Si quisiéramos dar un nombre distinto a las variables se podría hacer algo así:
+
+```js
+const usuario = {
+    nombre: "Juan",
+    apellidos: "Expósito",
+    edad: 47,
+    correo: "juan.exposito@ejemplo.com"
+}
+
+const { edad: usuarioEdad, nombre: usuarioNombre, apellidos: usuarioApellidos } = usuario
+
+console.log(usuarioNombre, usuarioApellidos, usuarioEdad)
+
+// Salida:
+// Juan Expósito 47
+```
+Es muy habitual encontrar en frameworks como **React** la desestructuración dentro de las funciones. 
+
+```js
+const usuario = {
+    nombre: "Juan",
+    apellidos: "Expósito",
+    edad: 47,
+    correo: "juan.exposito@ejemplo.com"
+}
+
+const nombre_completo = ( {nombre, apellidos} ) => {
+    return `${nombre} ${apellidos}`
+}
+
+console.log(`El nombre completo es ${nombre_completo(usuario)}`)
+
+// Salida:
+// El nombre completo es Juan Expósito
+```
+En el ejemplo se pasa como parámetro al **usuario** a la función **nombre_completo**. En la misma definición de los parámetros, se puede hacer la desestructuración y quedarían disponibles para utilizar dentro de la función.
 
 ## Desestructuración de Arreglos
 

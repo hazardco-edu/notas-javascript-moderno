@@ -18,6 +18,17 @@
   - [Relaciones entre Objetos](#relaciones-entre-objetos)
   - [Atributos de tipo arreglo](#atributos-de-tipo-arreglo)
   - [Operador Spread](#operador-spread)
+  - [Operador Optional Chaining](#operador-optional-chaining)
+  - [Operador Ternario](#operador-ternario)
+  - [Arreglos en Javascript y operador Spread](#arreglos-en-javascript-y-operador-spread)
+  - [Desestructuración de Objetos](#desestructuración-de-objetos)
+  - [Desestructuración de Arreglos](#desestructuración-de-arreglos)
+  - [Método map de arreglos](#método-map-de-arreglos)
+  - [Método find de arreglos](#método-find-de-arreglos)
+  - [Método filter de arreglos](#método-filter-de-arreglos)
+  - [Importar módulos de Javascript](#importar-módulos-de-javascript)
+  - [Exportar valores en Javascript](#exportar-valores-en-javascript)
+  - [Promesas](#promesas)
   - [Consumir API REST con Fetch API](#consumir-api-rest-con-fetch-api)
   - [Async / Await](#async--await)
   - [API DOM](#api-dom)
@@ -310,47 +321,47 @@ console.log(persona === persona2)
 ```
 Para crear el objeto persona2 primero decimos que estamos creando un objeto, añadiendo las llaves **{ }** y después propagamos el objeto completo con el operador **spread**. De esta forma obtenemos un objeto *distinto* (otra zona de memoria) pero con el mismo contenido que el objeto inicial.
 
-## Operador Optional Chaining
+## Operador Optional Chaining
 
 // Por hacer
 
-## Operador Ternario
+## Operador Ternario
 
 // Por hacer
 
-## Arreglos en Javascript y operador Spread
+## Arreglos en Javascript y operador Spread
 
 // Por hacer
 
-## Desestructuración de Objetos
+## Desestructuración de Objetos
 
 // Por hacer
 
-## Desestructuración de Arreglos
+## Desestructuración de Arreglos
 
 // Por hacer
 
-## Método map de arreglos
+## Método map de arreglos
 
 // Por hacer
 
-## Método find de arreglos
+## Método find de arreglos
 
 // Por hacer
 
-## Método filter de arreglos
+## Método filter de arreglos
 
 // Por hacer
 
-## Importar módulos de Javascript
+## Importar módulos de Javascript
 
 // Por hacer
 
-## Exportar valores en Javascript
+## Exportar valores en Javascript
 
 // Por hacer
 
-## Promesas
+##  Promesas
 
 // Por hacer
 

@@ -18,6 +18,9 @@
   - [Relaciones entre Objetos](#relaciones-entre-objetos)
   - [Atributos de tipo arreglo](#atributos-de-tipo-arreglo)
   - [Operador Spread](#operador-spread)
+  - [Consumir API REST con Fetch API](#consumir-api-rest-con-fetch-api)
+  - [Async / Await](#async--await)
+  - [API DOM](#api-dom)
 
 
 
@@ -306,3 +309,60 @@ console.log(persona === persona2)
 // false
 ```
 Para crear el objeto persona2 primero decimos que estamos creando un objeto, añadiendo las llaves **{ }** y después propagamos el objeto completo con el operador **spread**. De esta forma obtenemos un objeto *distinto* (otra zona de memoria) pero con el mismo contenido que el objeto inicial.
+
+## Operador Optional Chaining
+
+// Por hacer
+
+## Operador Ternario
+
+// Por hacer
+
+## Arreglos en Javascript y operador Spread
+
+// Por hacer
+
+## Desestructuración de Objetos
+
+// Por hacer
+
+## Desestructuración de Arreglos
+
+// Por hacer
+
+## Método map de arreglos
+
+// Por hacer
+
+## Método find de arreglos
+
+// Por hacer
+
+## Método filter de arreglos
+
+// Por hacer
+
+## Importar módulos de Javascript
+
+// Por hacer
+
+## Exportar valores en Javascript
+
+// Por hacer
+
+## Promesas
+
+// Por hacer
+
+## Consumir API REST con Fetch API
+
+// Por hacer
+
+## Async / Await
+
+// Por hacer
+
+## API DOM
+
+// Por hacer
+

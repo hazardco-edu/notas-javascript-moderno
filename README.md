@@ -16,10 +16,10 @@
   - [Funciones de flecha](#funciones-de-flecha)
   - [Objetos en Javascript](#objetos-en-javascript)
   - [Relaciones entre Objetos](#relaciones-entre-objetos)
+  - [Atributos de tipo arreglo](#atributos-de-tipo-arreglo)
+  - [Operador Spread](#operador-spread)
 
 
-
-<div id='id1'/>
 
 ## Introducción
 
@@ -35,8 +35,6 @@ En los apartados siguientes cubriremos los siguientes temas:
 - Las bibliotecas y frameworks de JavaScript populares, como React, Angular y Vue.
 
 Con estas notas proporcionamos una guía completa y actualizada para el mundo de JavaScript moderno, con ejemplos prácticos y aplicaciones útiles que te ayudarán a construir aplicaciones web modernas y escalables. ¡Comencemos!
-
-<div id='id2'/>
 
 ## Template String
 
@@ -84,8 +82,6 @@ console.log(mensaje)
 
 ```
 
-<div id='id3'/>
-
 ## Funciones
 
 Las funciones son bloques de código reutilizable que se pueden llamar en cualquier momento dentro de un programa. Las funciones se definen utilizando la palabra reservada **function** seguida del nombre de la función y paréntesis, donde se pueden añadir algunos parámetros de entrada. El cuerpo de la función debe ir entre llaves **{ }**.
@@ -103,8 +99,6 @@ console.log(`El resultado es ${resultado}`)
 
 ```
 En este ejemplo, la función sumar toma los parámetros *a* y *b*, que se suman y se devuelve el resultado. Luego, se llama a la función pasando los valores 2 y 3 como argumentos y se guarda el resultado en la variable *resultado*.
-
-<div id='id4'/>
 
 ## Funciones anónimas
 
@@ -125,8 +119,6 @@ console.log(`El resultado es ${resultado}`)
 En este ejemplo, se define una función anónima que se asigna a la variable *cuadrado*. La función toma un parámetro *num* y devuelve su cuadrado. Luego, se llama a la función pasando el valor 5 como argumento y se muestra el resultado.
 
 Además, las funciones en JavaScript pueden ser declaradas dentro de otras funciones, lo que se conoce como funciones anidadas o *closures*. Estas funciones tienen acceso al ámbito (*scope*) de la función externa y pueden acceder a sus variables y parámetros.
-
-<div id='id5'/>
 
 ## Funciones de flecha
 
@@ -158,8 +150,6 @@ console.log(`El resultado es ${resultado}`)
 //El resultado es 5
 
 ```
-
-<div id='id6'/>
 
 ## Objetos en Javascript
 
@@ -202,8 +192,6 @@ const persona = {
 
 Los objetos en JavaScript son dinámicos, lo que significa que se pueden agregar o eliminar propiedades y métodos en cualquier momento. También se pueden anidar objetos dentro de otros objetos para crear estructuras más complejas. Los objetos son una parte fundamental de JavaScript y se utilizan ampliamente en el desarrollo de aplicaciones web modernas.
 
-<div id='id7'/>
-
 ## Relaciones entre Objetos
 
 Algo con lo que nos vamos a encontrar en numerosas ocasiones son los objetos anidados u objetos dentro de otros objetos. 
@@ -226,5 +214,95 @@ const factura = {
 
 factura.total = 2000000
 console.log(factura.saludar())
-````
-El objeto anterior muestra el objeto *factura* con un objeto *cliente* que forma parte de la propia estructura.
+```
+
+El objeto anterior muestra el objeto *factura* con un objeto *cliente* que forma parte de la propia estructura. El acceso al *cliente* se debe hacer a través de **this** y navegando entre objetos hasta llegar al atributo deseado, por ejemplo: **this.cliente.nombre**
+
+## Atributos de tipo arreglo
+
+También nos vamos a encontrar con estructuras que incluyen arreglos dentro de los objetos.
+
+```js
+const factura = {
+    id: 102023,
+    concepto: 'Oracle Supremun License',
+    fecha: new Date(),
+    cliente: {
+        id: 23,
+        nombre: 'Juan Expósito',
+        edad: 47
+    },
+    items: [
+        {
+            producto: 'Oracle DB',
+            precio: 500000,
+            cantidad: 1
+        },
+                {
+            producto: 'Oracle Bus Service',
+            precio: 500000,
+            cantidad: 1
+        },
+                {
+            producto: 'Oracle inomini patri',
+            precio: 1000000,
+            cantidad: 1
+        }
+    ],
+    moneda: '€',
+    total: function () {
+        let total = 0
+        this.items.forEach( item => {
+            total += item.precio * item.cantidad
+        })
+        return total
+    },
+    saludar: function () {
+        return `Hola ${this.cliente.nombre}`
+    }
+}
+console.log(`El total es: ${factura.total()} ${factura.moneda}`)
+// Salida:
+// El total es: 2000000 €
+
+```
+En el ejemplo se define un arreglo con el símbolo de corchetes **[ ]** y dentro de ellos se van añadiendo los objetos que se necesitan, en este caso líneas de detalle de una factura.
+
+El método **total** utiliza es capaz de recorrer el arreglo de **items** e ir calculando el acumulado de las líneas de detalle.
+
+## Operador Spread
+
+Si igualamos una constante, o variable, a otra constante que contenga un objeto, no obtenemos un clon del objeto, lo que obtenemos es una referencia más a ese mismo objeto. (tendremos un nuevo puntero a la misma zona de memoria)
+
+```js
+const persona = {
+  nombre: 'Juan Expósito',
+  edad: 47,
+}
+
+const persona2 = persona
+
+console.log(persona === persona2)
+// Salida:
+// true
+```
+El ejemplo evalúa, con el operador **===**, si los objetos son exactamente iguales. 
+Si quisiéramos clonar el objeto **persona** en **persona2** tendríamos que utilizar el operador **spread** u operador de propagación, muy utilizado en Javascript moderno.
+
+Este operador se utiliza para expandir los elementos de un arreglo o los pares clave-valor de un objeto en un nuevo arreglo u objeto.
+
+La sintaxis del operador de propagación consiste en tres puntos consecutivos **...** seguidos del nombre del arreglo u objeto que se va a expandir.
+
+```js
+const persona = {
+  nombre: 'Juan Expósito',
+  edad: 47,
+}
+
+const persona2 = {...persona}
+
+console.log(persona === persona2)
+// Salida:
+// false
+```
+Para crear el objeto persona2 primero decimos que estamos creando un objeto, añadiendo las llaves **{ }** y después propagamos el objeto completo con el operador **spread**. De esta forma obtenemos un objeto *distinto* (otra zona de memoria) pero con el mismo contenido que el objeto inicial.
